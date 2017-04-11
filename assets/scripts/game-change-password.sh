@@ -5,7 +5,7 @@ curl --include --request PATCH http://localhost:4741/change-password/$ID \
   --header "Content-Type: application/json" \
   --data '{
     "passwords": {
-      "old": "ppp",
-      "new": "super sekrit"
+      "old": "old password",
+      "new": "new password"
     }
   }'
