@@ -10,8 +10,10 @@ let player = 'x'
 const togglePlayer = function () {
   if (player === 'x') {
     player = 'o'
+    playerWin.playerWin()
   } else {
     player = 'x'
+    playerWin.playerWin()
   }
 }
 
@@ -29,7 +31,6 @@ const onClickSquare = function () {
   } else {
     $(this).text('O')
   }
-
   // $(this).attr("id")
   togglePlayer()
 }
