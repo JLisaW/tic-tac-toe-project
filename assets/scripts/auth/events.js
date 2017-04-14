@@ -1,9 +1,11 @@
 'use strict'
 
 const getFormFields = require(`../../../lib/get-form-fields`)
-
+// const gameEngineEvents = require('../game-engine/events.js')
 const api = require('./api')
 const ui = require('./ui')
+// const gamesApi = require('../game-engine/api.js')
+// const gamesUi = require('./ui.js')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -48,6 +50,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
+  // $('#new-game').on('click', onNewGame)
 }
 
 module.exports = {

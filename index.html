@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Do not add `link` tags unless you know what you are doing -->
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
   <link rel="stylesheet" href="assets/styles/style.css">
   <!-- Do not add `script` tags unless you know what you are doing -->
   <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -22,6 +22,7 @@
         <legend>Sign up!</legend>
         <input type="text" name="credentials[email]" placeholder="email">
         <input type="password" name="credentials[password]" placeholder="password">
+          <input type="password" name="credentials[password_confirmation]" placeholder="password_confirmation">
         <input type="submit" name="submit" value="Sign up!">
       </fieldset>
 
@@ -56,8 +57,29 @@
         <legend>New Game!</legend>
         <input type="submit" name="submit" value="new game!">
       </fieldset>
-
     </form>
+  </div>
+
+<p class="winBanner"></p>
+
+  <div id="board">
+    <table>
+      <tr id="row1">
+        <td class="square" id='0'></td>
+        <td class="square" id='1'></td>
+        <td class="square" id='2'></td>
+      </tr>
+      <tr id="row2">
+        <td class="square" id='3'></td>
+        <td class="square" id='4'></td>
+        <td class="square" id='5'></td>
+      </tr>
+      <tr id="row3">
+        <td class="square" id='6'></td>
+        <td class="square" id='7'></td>
+        <td class="square" id='8'></td>
+      </tr>
+    </table>
   </div>
 
 </body>
