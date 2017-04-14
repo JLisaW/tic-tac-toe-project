@@ -10,14 +10,16 @@ $(() => {
 require('./example')
 
 const authEvents = require('./auth/events.js')
+const gameEngineEvents = require('./game-engine/events.js')
+
+// $(document).ready(function () {
+// })
 
 $(() => {
   authEvents.addHandlers()
+  gameEngineEvents.addGameHandler()
 })
 
-const gameEvents = require('./game-engine/events.js')
+module.exports = {
 
-$(() => {
-  gameEvents.addHandlers()
-  $('#new-game').on('submit', gameEvents.onNewGame)
-})
+}

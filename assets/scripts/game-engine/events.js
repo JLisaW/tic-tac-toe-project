@@ -2,7 +2,6 @@
 
 const gamesApi = require('../game-engine/api.js')
 const gamesUi = require('../game-engine/ui.js')
-// const checkWin = require('../game-logic/logic.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
 let player = 'x'
@@ -29,9 +28,12 @@ const onClickSquare = function () {
   } else {
     $(this).text('O')
   }
+
   // $(this).attr("id")
+
   togglePlayer()
 }
+
 const addGameHandler = function () {
   $('.square').on('click', onClickSquare)
 }
