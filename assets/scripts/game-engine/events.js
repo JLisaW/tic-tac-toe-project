@@ -4,7 +4,7 @@ const gamesApi = require('../game-engine/api.js')
 const gamesUi = require('../game-engine/ui.js')
 const playerWin = require('../game-logic/logic.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
-
+const board = require('../game-logic/logic.js').board
 let player = 'x'
 
 const togglePlayer = function () {
@@ -26,10 +26,13 @@ const onNewGame = function (event) {
 
 const onClickSquare = function () {
   event.preventDefault()
+  console.log('current player is', player)
   if (player === 'x') {
     $(this).text('X')
+    board[$(this).attr('id')] = 'x'
   } else {
     $(this).text('O')
+    board[$(this).attr('id')] = 'o'
   }
   // $(this).attr("id")
   togglePlayer()
