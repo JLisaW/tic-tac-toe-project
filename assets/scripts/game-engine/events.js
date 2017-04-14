@@ -2,6 +2,7 @@
 
 const gamesApi = require('../game-engine/api.js')
 const gamesUi = require('../game-engine/ui.js')
+const playerWin = require('../game-logic/logic.js')
 // const getFormFields = require(`../../../lib/get-form-fields`)
 
 let player = 'x'
@@ -30,7 +31,6 @@ const onClickSquare = function () {
   }
 
   // $(this).attr("id")
-
   togglePlayer()
 }
 
@@ -40,5 +40,6 @@ const addGameHandler = function () {
 
 module.exports = {
   onNewGame,
-  addGameHandler
+  addGameHandler,
+  playerWin
 }
