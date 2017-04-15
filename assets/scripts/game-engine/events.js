@@ -3,7 +3,8 @@
 const gamesApi = require('../game-engine/api.js')
 const gamesUi = require('../game-engine/ui.js')
 const playerWin = require('../game-logic/logic.js')
-// const getFormFields = require(`../../../lib/get-form-fields`)
+const getFormFields = require(`../../../lib/get-form-fields`)
+
 const board = require('../game-logic/logic.js').board
 let player = 'x'
 
@@ -15,13 +16,6 @@ const togglePlayer = function () {
     player = 'x'
     playerWin.playerWin()
   }
-}
-
-const onNewGame = function (event) {
-  event.preventDefault()
-  gamesApi.create()
-    .then(gamesUi.onSuccess)
-    .catch(gamesUi.onError)
 }
 
 const onClickSquare = function () {
@@ -38,8 +32,63 @@ const onClickSquare = function () {
   togglePlayer()
 }
 
+const onNewGame = function (event) {
+  event.preventDefault()
+  gamesApi.create()
+    .then(gamesUi.onSuccess)
+    .catch(gamesUi.onError)
+}
+
+const onGetGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+
+  if (game.id.length !== 0) {
+    gamesApi.show(game.id)
+      .then(gamesUi.onSuccess)
+      .catch(gamesUi.onError)
+  } else {
+    console.log('Please provide a game id.')
+  }
+}
+
+const onGetGames = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  const game = data.game
+
+  if (game.id.length !== 0) {
+    gamesApi.show(game.id)
+        .then(gamesUi.onSuccess)
+        .catch(gamesUi.onError)
+  } else {
+    console.log('Please provide the game id.')
+  }
+}
+
+const onUpdateGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  const game = game.book
+
+  if (game.id.length !== 0) {
+    gamesApi.update(data)
+
+    .then(gamesUi.onUpdateSuccess)
+    .catch(gamesUi.onError)
+  } else {
+    console.log('Please provide a game id!')
+  }
+}
+
 const addGameHandler = function () {
   $('.square').on('click', onClickSquare)
+  $('.new-game').on('click', onNewGame)
+  $('game-search').on('click', onGetGame)
+  $('.games').on('click', onGetGames)
+  $('update-game').on('click', onUpdateGame)
 }
 
 module.exports = {
