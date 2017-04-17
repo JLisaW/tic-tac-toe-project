@@ -88,12 +88,6 @@ const onGetStats = function (event) {
   .catch(gamesUi.onGetStatsError)
 }
 
-// const onGameOver = function () {
-// }
-
-// const validMove = function () {
-// }
-
 const addGameHandler = function () {
   $('.square').on('click', onClickSquare)
   $('.new-game').on('click', onNewGame)

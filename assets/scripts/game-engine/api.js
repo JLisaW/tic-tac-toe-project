@@ -3,13 +3,6 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-// const indexOfGames = function () {
-//   return $.ajax({
-//     url: config.apiOrigin + '/games',
-//     method: 'GET'
-//   })
-// }
-
 const createGame = function () {
   return $.ajax({
     url: config.apiOrigin + '/games',
@@ -19,7 +12,7 @@ const createGame = function () {
     }
   })
 }
-const updateGame = function (data) {
+const updateGame = function (index, value, gameOver) {
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -29,11 +22,11 @@ const updateGame = function (data) {
     data: {
       'game': {
         'square': {
-          'index': 0,
-          'value': 'x'
-        }
-      },
-      'over': false
+          'index': '0',
+          ' value': 'x'
+        },
+        'over': gameOver
+      }
     }
   })
 }
@@ -49,8 +42,19 @@ const getGame = function (data) {
   })
 }
 
+const getGameIndex = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createGame,
   updateGame,
-  getGame
+  getGame,
+  getGameIndex
 }

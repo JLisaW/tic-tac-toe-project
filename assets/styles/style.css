@@ -23,6 +23,10 @@ font-size: 10px
   font-size: 35px;
 }
 
+.drawBanner {
+  display: none;
+  font-size: 35px;
+}
 .board {
 float: left;
 }
