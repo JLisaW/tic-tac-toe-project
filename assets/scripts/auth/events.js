@@ -14,6 +14,11 @@ const onSignUp = function (event) {
   event.preventDefault()
   api.signUp(data)
     .then(ui.signUpSuccess)
+    .then(() => {
+      api.signInAuto(data)
+      .then(ui.autoSignInSuccess)
+      .catch(ui.autoSignInFailure)
+    })
     .catch(ui.signUpFailure)
 }
 
@@ -50,7 +55,6 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  // $('#new-game').on('click', onNewGame)
 }
 
 module.exports = {

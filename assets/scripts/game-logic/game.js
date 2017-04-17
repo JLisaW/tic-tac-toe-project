@@ -1,11 +1,18 @@
 'use strict'
-
-const game = {
-  xTurn: true,
-  currentMove: 0,
-  currentBox: 0
-}
-
-module.exports = {
-  game
-}
+// const logic = require('/game-logic/logic.js')
+//
+// let playerX = []
+// let playerO = []
+// let player = 'x'
+// let currentMove = 0
+//
+// const newGame = function () {
+//   playerX = []
+//   playerO = []
+//   player = 'x'
+//   currentMove = 0
+// }
+//
+// module.exports = {
+//   newGame
+// }

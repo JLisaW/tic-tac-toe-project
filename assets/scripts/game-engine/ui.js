@@ -1,19 +1,34 @@
 'use strict'
-// const store = require('../store.js')
+const store = require('../store.js')
+
+let gamesPlayed = 0
 
 const onCreateSuccess = function (data) {
+  store.game = data.game
   console.log('New Game Created')
+  if (!data) {
+    console.warn('Either you have the wrong game ID or game has not been played yet.')
+  } else if (data.game) {
+    console.log(data.game)
+  } else {
+    console.table(data.game)
+  }
 }
 
-const onError = function (response) {
+const onCreateError = function (response) {
   console.error(response)
 }
 
-const onUpdateSuccess = function () {
-  console.log('You have successfully updated a game')
+const onUpdateSuccess = function (data) {
+  store.game = data.game
+  gamesPlayed = store.game.length
+  $('.gameStats').text('You played ' + store.games.length + 'games.')
+  $('.gameStats').show
+  console.log('You have successfully updated a game.')
 }
 module.exports = {
   onCreateSuccess,
-  onError,
-  onUpdateSuccess
+  onCreateError,
+  onUpdateSuccess,
+  gamesPlayed
 }

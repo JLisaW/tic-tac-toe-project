@@ -2,6 +2,15 @@
 
 const store = require('../store.js')
 
+// const autoSignInSuccess = function (data) {
+//   store.user = data.user
+//   $('#signOut').show()
+//   $('#startGame').show()
+//   $('#stats').show()
+//   $('#sign-up').hide()
+//   $('#sign-in').hide()
+//   $('#change-password').show()
+// }
 const signUpSuccess = (data) => {
   console.log('Sign Up Successful')
 }
@@ -44,4 +53,5 @@ module.exports = {
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure
+  // autoSignInSuccess
 }

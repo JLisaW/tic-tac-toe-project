@@ -1,31 +1,56 @@
 'use strict'
 
 const config = require('../config.js')
+const store = require('../store.js')
 
-const index = function () {
+// const indexOfGames = function () {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games',
+//     method: 'GET'
+//   })
+// }
+
+const createGame = function () {
   return $.ajax({
     url: config.apiOrigin + '/games',
-    method: 'GET'
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const updateGame = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'square': {
+          'index': 0,
+          'value': 'x'
+        }
+      },
+      'over': false
+    }
   })
 }
 
-const create = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/games',
-    method: 'POST'
-  })
-}
-
-const getGame = function () {
+const getGame = function (data) {
   event.preventDefault()
   return $.ajax({
     url: config.apiOrigin + '/games:id',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
 module.exports = {
-  create,
-  index,
+  createGame,
+  updateGame,
   getGame
 }
