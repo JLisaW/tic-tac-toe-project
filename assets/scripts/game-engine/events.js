@@ -73,10 +73,17 @@ const onClickSquare = function () {
     currentMove += 1
     playerWinLogic.playerWin()
     console.log('player win checked 2')
-  } else if (currentMove === 10 && win === false) {
+  } if (currentMove === 10 && win === false) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
-  } togglePlayer()
+  // } else if (win === true) {
+  //   $('.winBanner').text('player ' + player + ' wins!')
+  //   $('.winBanner').show()
+  }
+  // } else if (currentMove === 10 && win === false) {
+  //   $('.drawBanner').text('Game is a draw')
+  //   $('.drawBanner').show()
+  togglePlayer()
 }
 
 // const onNewGame = function (event) {
