@@ -3,7 +3,7 @@
 const gamesApi = require('../game-engine/api.js')
 const gamesUi = require('../game-engine/ui.js')
 const playerWinLogic = require('../game-logic/logic.js')
-const getFormFields = require(`../../../lib/get-form-fields`)
+const getFormFields = require('../../../lib/get-form-fields')
 
 let board = require('../game-logic/logic.js')
 
@@ -18,20 +18,19 @@ const togglePlayer = function () {
     player = 'x'
   }
 }
-
-// const onClickSquare = function () {
-//   event.preventDefault()
-//   console.log('current player is', player)
-//   if (player === 'x') {
-//     $(this).text('X')
-//     board[$(this).attr('id')] = 'x'
-//   } else {
-//     $(this).text('O')
-//     board[$(this).attr('id')] = 'o'
-//   }
-//   // $(this).attr("id")
-//   togglePlayer()
-// }
+  // const onClickSquare = function () {
+  //   event.preventDefault()
+  //   console.log('current player is', player)
+  //   if (player === 'x') {
+  //     $(this).text('X')
+  //     board[$(this).attr('id')] = 'x'
+  //   } else {
+  //     $(this).text('O')
+  //     board[$(this).attr('id')] = 'o'
+  //   }
+  //   // $(this).attr("id")
+  //   togglePlayer()
+  // }
 let currentMove = 1
 const win = false
 
@@ -43,19 +42,19 @@ const onNewGame = function () {
   player = 'x'
   currentMove = 1
   gamesApi.onNewGame()
-  .then(gamesUi.onSuccess)
-  .catch(gamesUi.onError)
+      .then(gamesUi.onSuccess)
+      .catch(gamesUi.onError)
   $(this).attr('id')
 }
 
-// const updateBoard = function (boardArray) {
-//   for (let i = 0; i < 9; i++) {
-//     if (boardArray[i] === 0) {
-//       board[i] = 5
-//       boardArray[i] = 5
-//     }
-//   }
-// }
+  // const updateBoard = function (boardArray) {
+  //   for (let i = 0; i < 9; i++) {
+  //     if (boardArray[i] === 0) {
+  //       board[i] = 5
+  //       boardArray[i] = 5
+  //     }
+  //   }
+  // }
 
 const onClickSquare = function () {
   event.preventDefault()
@@ -73,17 +72,11 @@ const onClickSquare = function () {
     currentMove += 1
     playerWinLogic.playerWin()
     console.log('player win checked 2')
-  } if (currentMove === 10 && win === false) {
+  } if (currentMove === 9 && win === false) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
-  // } else if (win === true) {
-  //   $('.winBanner').text('player ' + player + ' wins!')
-  //   $('.winBanner').show()
-  }
-  // } else if (currentMove === 10 && win === false) {
-  //   $('.drawBanner').text('Game is a draw')
-  //   $('.drawBanner').show()
-  togglePlayer()
+  } togglePlayer()
+  // $('.square').off('click', onClickSquare)
 }
 
 // const onNewGame = function (event) {
@@ -112,8 +105,8 @@ const onGetGames = function (event) {
   const game = data.game
   if (game.id.length !== 0) {
     gamesApi.show(game.id)
-        .then(gamesUi.onSuccess)
-        .catch(gamesUi.onError)
+      .then(gamesUi.onSuccess)
+      .catch(gamesUi.onError)
   } else {
     console.log('Please provide the game id.')
   }
@@ -126,8 +119,8 @@ const onUpdateGame = function (event) {
   const game = data.game
   if (game.id.length !== 0) {
     gamesApi.updateGame(data)
-    .then(gamesUi.onUpdateSuccess)
-    .catch(gamesUi.onUpdateError)
+      .then(gamesUi.onUpdateSuccess)
+      .catch(gamesUi.onUpdateError)
   } else {
     console.log('Please provide a game id!')
   }
@@ -136,12 +129,12 @@ const onUpdateGame = function (event) {
 const onGetStats = function (event) {
   event.preventDefault()
   gamesApi.getStats()
-  .then(gamesUi.onGetStatsSuccess)
-  .catch(gamesUi.onGetStatsError)
+    .then(gamesUi.onGetStatsSuccess)
+    .catch(gamesUi.onGetStatsError)
 }
 
 const addGameHandler = function () {
-  $('.square').on('click', onClickSquare)
+  $('.square').one('click', onClickSquare)
   $('.new-game').on('click', onNewGame)
   $('.game-search').on('click', onGetGame)
   $('.games').on('click', onGetGames)

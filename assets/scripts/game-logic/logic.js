@@ -87,7 +87,6 @@ const playerWin = function () {
     return
   }
 }
-
 // game draw
 // if (currentMove === 10 && win === false) {
 //   $('.drawBanner').text('Game is a draw')
