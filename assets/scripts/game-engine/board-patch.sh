@@ -6,10 +6,10 @@ curl "http://localhost:4741/games/${ID}" \
     --data '{
       "game": {
         "cell": {
-          "index": 0,
-          "value": "x"
+          "index": index
+          "value": value
         },
-        "over": false
+        "over": true
       }
     }'
 

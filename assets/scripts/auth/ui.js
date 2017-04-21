@@ -2,17 +2,18 @@
 
 const store = require('../store.js')
 
-// const autoSignInSuccess = function (data) {
-//   store.user = data.user
-//   $('#signOut').show()
-//   $('#startGame').show()
-//   $('#stats').show()
-//   $('#sign-up').hide()
-//   $('#sign-in').hide()
-//   $('#change-password').show()
-// }
+const autoSignInSuccess = function (data) {
+  store.user = data.user
+  $('#signOut').show()
+  $('#startGame').show()
+  $('#stats').show()
+  $('#sign-up').hide()
+  $('#sign-in').hide()
+  $('#change-password').show()
+}
 const signUpSuccess = (data) => {
   console.log('Sign Up Successful')
+  $('#modalSignUpSuccess').modal('show')
 }
 
 const signUpFailure = (error) => {
@@ -52,6 +53,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
-  changePasswordFailure
-  // autoSignInSuccess
+  changePasswordFailure,
+  autoSignInSuccess
 }

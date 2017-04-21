@@ -33,9 +33,10 @@ const updateGame = function (index, value, gameOver) {
 }
 
 const getGame = function (data) {
+  console.log('game loaded')
   event.preventDefault()
   return $.ajax({
-    url: config.apiOrigin + '/games:id',
+    url: config.apiOrigin + '/games',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -43,19 +44,19 @@ const getGame = function (data) {
   })
 }
 
-const getGameIndex = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/games?over=true',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const getGameIndex = function () {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games?over=true',
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 module.exports = {
   createGame,
   updateGame,
-  getGame,
-  getGameIndex
+  getGame
+  // getGameIndex
 }
