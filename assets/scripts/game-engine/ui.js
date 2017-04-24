@@ -26,9 +26,14 @@ const onUpdateSuccess = function (data) {
   $('.gameStats').show
   console.log('You have successfully updated a game.')
 }
+
+const onUpdateFailure = function (response) {
+  console.error(response)
+}
 module.exports = {
   onCreateSuccess,
   onCreateError,
   onUpdateSuccess,
+  onUpdateFailure,
   gamesPlayed
 }

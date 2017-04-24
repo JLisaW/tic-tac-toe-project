@@ -2,30 +2,14 @@
 
 const getFormFields = require(`../../../lib/get-form-fields`)
 // const gameEngineEvents = require('../game-engine/events.js')
-const gamesApi = require('../game-engine/api.js')
+const gamesApi = require('./api.js')
 const gamesUi = require('./ui.js')
 const autoSignInSuccess = require('./ui.js')
 const autoSignInFailure = require('./ui.js')
 
-// const onSignUp = function (event) {
-//   const data = getFormFields(this)
-//   console.log('Sign Up Complete')
-//
-//   event.preventDefault()
-//   api.signUp(data)
-//     .then(ui.signUpSuccess)
-//     .then(() => {
-//       api.signInAuto(data)
-//       .then(ui.autoSignInSuccess)
-//       .catch(ui.autoSignInFailure)
-//     })
-//     .catch(ui.signUpFailure)
-// }
-
 const onSignIn = function (event) {
   const data = getFormFields(this)
   console.log('SignIn complete!')
-
   event.preventDefault()
   gamesApi.signIn(data)
     .then(gamesUi.signInSuccess)
@@ -35,10 +19,10 @@ const onSignIn = function (event) {
 const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
-  gamesApi.onSignUp(data)
+  gamesApi.signUp(data)
     .then(gamesUi.signUpSuccess)
     .then(() => {
-      gamesApi.signInAuto(data)
+      gamesApi.autoSignIn(data)
         .then(gamesUi.autoSignInSuccess)
         .catch(gamesUi.autoSignInFailure)
     })

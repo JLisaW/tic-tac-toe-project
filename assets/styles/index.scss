@@ -5,13 +5,20 @@ h1 {
 text-align: center;
 }
 
+
 .authentication {
 height: 100px;
 float:right;
 font-size: 10px
 }
-.modalAuthentication {
-color: green;
+
+// .modalAuthentication {
+// color: green;
+// display: none
+// }
+
+.modalSignUpSuccess{
+  display: none
 }
 .passwordChangeBanner {
   display:none;
@@ -39,5 +46,13 @@ color: green;
 }
 
 .board {
+margin: 100px auto;
+background-color:#d2e1dd;
+padding: 20px 20px 9px;
 float: left;
+line-height: 36px;
+text-align: center;
+font-size: 35px;
+$color-text: #036;
+letter-spacing: 1px;
 }

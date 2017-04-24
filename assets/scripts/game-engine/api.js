@@ -12,6 +12,7 @@ const createGame = function () {
     }
   })
 }
+
 const updateGame = function (index, value, gameOver) {
   console.log('game update called')
   return $.ajax({

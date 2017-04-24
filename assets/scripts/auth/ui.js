@@ -4,16 +4,16 @@ const store = require('../store.js')
 
 const autoSignInSuccess = function (data) {
   store.user = data.user
-  $('#signOut').show()
-  $('#startGame').show()
-  $('#stats').show()
-  $('#sign-up').hide()
-  $('#sign-in').hide()
-  $('#change-password').show()
+  // $('#sign-out').show()
+  // $('#new-game').show()
+  // $('#stats').show()
+  // $('#sign-up').hide()
+  // $('#sign-in').hide()
+  // $('#change-password').show()
 }
 const signUpSuccess = (data) => {
   console.log('Sign Up Successful')
-  $('#modalSignUpSuccess').modal('show')
+  // $('#modalSignUpSuccess').modal('show')
 }
 
 const signUpFailure = (error) => {
@@ -22,6 +22,7 @@ const signUpFailure = (error) => {
 const signInSuccess = (response) => {
   console.log('Sign In Successful')
   store.user = response.user
+  // $('#modalSignInSuccess').modal('show')
 }
 
 const signInFailure = (error) => {
@@ -39,6 +40,7 @@ const signOutFailure = (error) => {
 
 const changePasswordSuccess = (response) => {
   console.log('Password Changed Successfully')
+  $('#modalchangePasswordSuccess').modal('show')
 }
 
 const changePasswordFailure = (error) => {
