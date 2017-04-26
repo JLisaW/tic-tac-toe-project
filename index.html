@@ -68,34 +68,39 @@
       </fieldset>
     </form>
 
-    <form id="game-update">
+    <!-- <form id="game-update">
       <fieldset>
         <legend>Update Game</legend>
         <input type="text" name="game[id]" id="game-id-update" placeholder="Game ID Here">
         <button type="submit" class="btn btn-default">Update Game</button>
       </fieldset>
-    </form>
+    </form> -->
 
     <form id="gameStats">
       <fieldset>
         <legend>Get Game Stats</legend>
       </fieldset>
-      <input name="game[cell][index]" type="text" value="0">
-      <input name="game[cell][value]" type="text" value="x">
-    ÷
+      <input id="games-played" type="text" value="Games Played">
+      <input id="games-won" type="text" value="Games Won">
+      <button type="submit" class="btn btn-default">Game Stats</button>
     </form>
+    <!-- <form>
+  <input name="game[cell][index]" type="text" value="index">
+  <input name="game[cell][value]" type="text" value="value">
+  <input name="game[over]" type="text" value="gameOver">
+</form> -->
   </div>
 
-<div class="modalContainer">
+<!-- <div class="modalContainer">
   <div class="modalAuthentication" class="modal fade" role="dialog">
     <div class="modal-dialog">
-      <!-- // modal buttons       -->
-    <div id="modalSignUpSuccess" class="modal fade">
+      <!/ modal buttons       -->
+    <!-- <div id="modalSignUpSuccess" class="modal fade">
     <div id="modalSignInSuccess" class="modal fade">
     </div>
   </div>
 </div>
-</div>
+</div> -->
   <p class="winBanner">Win</p>
   <p class="drawBanner">Draw!</p>
   <p class="passwordChangeBanner">Password Changed Successfully</p>

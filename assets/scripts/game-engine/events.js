@@ -21,21 +21,35 @@ const togglePlayer = function () {
 let currentMove = 1
 const win = false
 
-const onNewGame = function () {
+// const forUpdate = {
+//   'game': {
+//     'cell': {
+//       'index': index,
+//       'value': value
+//     },
+//     'over': gameOver
+//   }
+// }
+
+const onNewGame = function (event) {
+  console.log('onNewGame')
   event.preventDefault()
   console.log('new game started')
   // $('.square'['id']).text('')
   // board.board[2] = 'B'
   player = 'x'
+  // win = false
+  // forUpdate.board.over = win
   currentMove = 1
-  gamesApi.onNewGame()
-      .then(gamesUi.onNewGameSuccess)
-      .catch(gamesUi.onNewGameError)
+  // const data = getFormFields(event.target)
+  gamesApi.createGame()
+      .then(gamesUi.createGameSuccess)
+      .catch(gamesUi.createGameError)
   $(this).attr('id')
 }
 
-const onClickSquare = function () {
-  event.preventDefault()
+const onClickSquare = function (event) {
+  // event.preventDefault()
   console.log('current player is', player)
   if (player === 'x' && win === false) {
     $(this)[0].innerText = 'x'
@@ -54,6 +68,7 @@ const onClickSquare = function () {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
   } togglePlayer()
+  // gamesApi.updateGame({game: onClickSquare})
   // $('.square').off('click', onClickSquare)
 }
 
@@ -83,36 +98,32 @@ const onGetGames = function (event) {
   }
 }
 
-const onUpdatePlayedGame = function (event) {
-  event.preventDefault()
+const onUpdateGame = function (event) {
   const data = getFormFields(event.target)
-  console.log(data)
-  const game = data.game
-  if (game.id.length !== 0) {
-    gamesApi.updateGame(data)
+  gamesApi.updateGame(data)
       .then(gamesUi.onUpdateSuccess)
       .catch(gamesUi.onUpdateError)
-  } else {
-    console.log('Please provide a game id!')
-  }
 }
 
-// const onGetStats = function (event) {
-//   event.preventDefault()
-//   gamesApi.getStats()
-//     .then(gamesUi.onGetStatsSuccess)
-//     .catch(gamesUi.onGetStatsError)
-// }
+const onGetStats = function (event) {
+  event.preventDefault()
+  gamesApi.getStats()
+    .then(gamesUi.onGetStatsSuccess)
+    .catch(gamesUi.onGetStatsError)
+}
 
 const addGameHandler = function () {
+  console.log('addGameHandler')
   $('.square').one('click', onClickSquare)
-  $('.new-game').on('click', onNewGame)
+  $('#new-game').on('click', onNewGame)
   // $('.game-search').on('click', onGetGame)
   $('.games').on('click', onGetGames)
-  $('.update-game').on('click', onUpdatePlayedGame)
+  // $('.update-game').on('click', onUpdateGame)
   // $('.gameStats').on('click', onGetStats)
 }
 
 module.exports = {
-  addGameHandler
+  addGameHandler,
+  onGetStats,
+  onUpdateGame
 }

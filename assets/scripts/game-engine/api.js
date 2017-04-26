@@ -9,12 +9,13 @@ const createGame = function () {
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
+    },
+    data: ''
   })
 }
 
 const updateGame = function (index, value, gameOver) {
-  console.log('game update called')
+  console.log('game update called', store.game)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -27,7 +28,7 @@ const updateGame = function (index, value, gameOver) {
           'index': index,
           'value': value
         },
-        'over': true
+        'over': gameOver
       }
     }
   })
@@ -45,19 +46,19 @@ const getGame = function (data) {
   })
 }
 
-// const getGameIndex = function () {
-//   return $.ajax({
-//     url: config.apiOrigin + '/games?over=true',
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const getGameIndex = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games?over=true',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   createGame,
   updateGame,
-  getGame
-  // getGameIndex
+  getGame,
+  getGameIndex
 }
