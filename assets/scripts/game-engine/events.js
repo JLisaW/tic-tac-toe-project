@@ -76,7 +76,7 @@ const onClickSquare = function (event) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
   } togglePlayer()
-  gamesApi.updateGame(board)
+  gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
 }
 
 // const onGetGame = function (event) {
