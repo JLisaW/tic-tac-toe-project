@@ -31,10 +31,18 @@ const win = false
 //   }
 // }
 
+// const clearBoard = function () {
+//   console.log('in the clearBoard function now')
+//   for (const '' in board) {
+//     board[0] = ''
+//   }
+// }
+
 const onNewGame = function (event) {
   console.log('onNewGame')
   event.preventDefault()
   console.log('new game started')
+  // board.clearBoard()
   // $('.square'['id']).text('')
   // board.board[2] = 'B'
   player = 'x'
@@ -68,8 +76,7 @@ const onClickSquare = function (event) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
   } togglePlayer()
-  // gamesApi.updateGame({game: onClickSquare})
-  // $('.square').off('click', onClickSquare)
+  gamesApi.updateGame(board)
 }
 
 // const onGetGame = function (event) {
@@ -99,6 +106,8 @@ const onGetGames = function (event) {
 }
 
 const onUpdateGame = function (event) {
+  event.preventDefault()
+  console.log('onUpdateGame called')
   const data = getFormFields(event.target)
   gamesApi.updateGame(data)
       .then(gamesUi.onUpdateSuccess)
