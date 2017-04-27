@@ -21,28 +21,11 @@ const togglePlayer = function () {
 let currentMove = 1
 const win = false
 
-// const forUpdate = {
-//   'game': {
-//     'cell': {
-//       'index': index,
-//       'value': value
-//     },
-//     'over': gameOver
-//   }
-// }
-
-// const clearBoard = function () {
-//   console.log('in the clearBoard function now')
-//   for (const '' in board) {
-//     board[0] = ''
-//   }
-// }
-
 const onNewGame = function (event) {
   console.log('onNewGame')
   event.preventDefault()
   console.log('new game started')
-  // board.clearBoard()
+  // $('.board').show
   // $('.square'['id']).text('')
   // board.board[2] = 'B'
   player = 'x'
