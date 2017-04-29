@@ -8,6 +8,10 @@ const getFormFields = require('../../../lib/get-form-fields')
 const board = require('../game-logic/logic.js')
 let player = 'x'
 
+let userStats = {
+  games: 0
+}
+
 // togglePlayer is to switch between player 'x' and player 'o'
 const togglePlayer = function () {
   console.log('toggling player')
@@ -18,19 +22,35 @@ const togglePlayer = function () {
   }
 }
 
-let currentMove = 1
+let currentMove = 0
 let win = false
+
+// const resetGame = function (event) {
+// // event.preventDefault()
+//   // board.board[parseInt($(this).attr('id'))] = ['', '', '', '', '', '', '', '', '']
+//   console.log('board reset')
+//   player = 'x'
+//   currentMove = 0
+//   win = false
+//   // $('#container').removeClass('hidden')
+//   $('.square').on('click', onNewGame)
+//   $('.square').text('')
+// }
+
+// $('#new-game').on('click', function () {
+//   $('.board').show()
+//   $('.square').text('')
+// })
 
 const onNewGame = function (event) {
   console.log('onNewGame')
   event.preventDefault()
-  $('.square').empty()
-  $('.board').show()
-  $('.square').text('')
   win = false
-  console.log('new game started')
   player = 'x'
-  currentMove = 1
+  currentMove = 0
+  $('.board').show()
+  $('.userStats').hide()
+  console.log('new game started')
   gamesApi.createGame()
       .then(gamesUi.createGameSuccess)
       .catch(gamesUi.createGameError)
@@ -58,12 +78,15 @@ const onClickSquare = function (event) {
   if (currentMove === 9 && win === false) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
-    gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
-    // onClickSquare.over = true
-  // } if (win === true) {
-  // }
-  }
+  } gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
 }
+
+// const onEndGame = function (event) {
+//   console.log('game ended')
+//   if (win === true) {
+//     board.board = ['', '', '', '', '', '', '', '', '']
+//   }
+// }
 // const onGetGame = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
@@ -101,11 +124,18 @@ const onUpdateGame = function (event) {
 
 const onGetStats = function (event) {
   event.preventDefault()
-  gamesApi.getStats()
-    .then(gamesUi.onGetStatsSuccess)
-    .catch(gamesUi.onGetStatsError)
+  console.log('onGetStats fired')
+  gamesApi.getGame()
+    .then(gamesUi.getGamesSuccess)
+    .catch(gamesUi.getGamesFailure)
 }
 
+// $('#new-game').on('click', function () {
+//   $('.square').text('')
+//   // $('.square').removeClass('avoid-clicks')
+//   // $('.board').removeClass('avoid-clicks')
+//   // $('#winner').text('')
+// })
 const addGameHandler = function () {
   console.log('addGameHandler')
   $('.square').on('click', onClickSquare)
@@ -113,11 +143,13 @@ const addGameHandler = function () {
   // $('.game-search').on('click', onGetGame)
   $('.games').on('click', onGetGames)
   $('.update-game').on('click', onUpdateGame)
-  // $('.gameStats').on('click', onGetStats)
+  $('.gameStats').on('click', onGetStats)
 }
 
 module.exports = {
   addGameHandler,
   onGetStats,
-  onUpdateGame
+  onUpdateGame,
+  onNewGame
+  // resetGame
 }

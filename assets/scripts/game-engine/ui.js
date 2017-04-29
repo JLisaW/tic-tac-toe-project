@@ -1,24 +1,12 @@
 'use strict'
 const store = require('../store.js')
-// const endGame = require('./events.js')
+// const resetGame = require('./events.js')
 
 let gamesPlayed = 0
 
-// const onNewGame = function (data) {
-//   store.game = data.game
-//   console.log('New Game Created')
-//   if (!data) {
-//     console.warn('Either you have the wrong game ID or game has not been played yet.')
-//   } else if (data.game) {
-//     console.log(data.game)
-//   } else {
-//     console.table(data.game)
-//   }
-// }
-
-const createGameSuccess = function (response) {
+const createGameSuccess = function (data) {
   console.log('game created')
-  store.game = response.game
+  store.game = data.game
   console.log('create game success:', store.game)
 }
 
@@ -37,11 +25,25 @@ const onUpdateSuccess = function (data) {
 const onUpdateFailure = function (response) {
   console.error(response)
 }
+
+const getGamesSuccess = (data) => {
+  store.games = data.games
+  gamesPlayed = store.games.length
+  $('.gameStats').text('You have played ' + store.games.length + ' games!')
+  $('.gameStats').show()
+}
+
+const getGamesFailure = (error) => {
+  console.error(error)
+}
+
 module.exports = {
   // onNewGame,
   createGameSuccess,
   createGameError,
   onUpdateSuccess,
   onUpdateFailure,
-  gamesPlayed
+  gamesPlayed,
+  getGamesSuccess,
+  getGamesFailure
 }

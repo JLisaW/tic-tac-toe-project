@@ -1,18 +1,20 @@
 'use strict'
 // const gamesUi = require('../game-engine/events.js')
 // const gamesApi = require('../game-engine/api.js')
-const updateGame = require('../game-engine/events.js')
+// const win = require('../game-engine/events.js')
 
 const board = ['', '', '', '', '', '', '', '', '']
+let win = false
 
 // check for winner
 const playerWin = function () {
   console.log(board)
   if (board[0] === board[1] && board[1] === board[2] && (board[0]) !== '') {
     console.log('row 1')
-    $('.board').hide()
+    // $('.board').hide()
     $('.winBanner').text('player ' + board[1] + ' wins!')
     $('.winBanner').show()
+    win = true
     console.log('win012')
     console.log('')
     return
@@ -57,9 +59,6 @@ const playerWin = function () {
     $('.winBanner').text('player ' + board[2] + ' wins!')
     $('.winBanner').show()
     console.log('win246')
-    return
-  }
-  if (updateGame.win === true || updateGame.currentMove === 9) {
     return
   }
 }

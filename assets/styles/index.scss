@@ -12,9 +12,16 @@ float:right;
 font-size: 10px
 }
 
+.userStats{
+  margin-top: 10px;
+}
 // .hidden{
 //   visibility: hidden;
 // }
+
+.avoid-clicks {
+  pointer-events: none;
+}
 
 .modalSignUpSuccess{
   display: none

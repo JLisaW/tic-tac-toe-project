@@ -27,7 +27,7 @@
         <input type="submit" name="submit" value="Sign up!">
       </fieldset>
     </form>
-
+<br>
     <form id="sign-in">
       <fieldset>
         <legend>Sign In!</legend>
@@ -36,37 +36,37 @@
         <input type="submit" name="submit" value="Sign In!">
       </fieldset>
     </form>
-
+<br>
+<form id="change-password">
+  <fieldset>
+    <legend>Change Password!</legend>
+    <input type="password" name="passwords[old]" placeholder="old password">
+    <input type="password" name="passwords[new]" placeholder="new password">
+    <input type="submit" name="submit" value="Password Changed!">
+  </fieldset>
+</form>
+<br>
     <form id="sign-out">
       <fieldset>
         <legend>Sign Out!</legend>
         <input type="submit" name="submit" value="Sign Out!">
       </fieldset>
     </form>
-
-    <form id="change-password">
-      <fieldset>
-        <legend>Change Password!</legend>
-        <input type="password" name="passwords[old]" placeholder="old password">
-        <input type="password" name="passwords[new]" placeholder="new password">
-        <input type="submit" name="submit" value="Password Changed!">
-      </fieldset>
-    </form>
-
+<br>
     <form id="new-game">
       <fieldset>
         <legend>New Game!</legend>
         <input type="submit" name="submit" value="new game!">
       </fieldset>
     </form>
-
-    <form id="game-search">
+<br>
+    <!-- <form id="game-search">
       <fieldset>
         <legend>Get Game</legend>
         <input type="text" name="game[id]" id="game-id" placeholder="Game ID Here">
         <button type="submit" class="btn btn-default">Game Search</button>
       </fieldset>
-    </form>
+    </form> -->
 
     <!-- <form id="game-update">
       <fieldset>
@@ -75,8 +75,16 @@
         <button type="submit" class="btn btn-default">Update Game</button>
       </fieldset>
     </form> -->
-
-    <form id="gameStats">
+<br>
+<form class="gameStats">
+    <fieldset>
+      <legend>Game Stats</legend>
+        <input type="submit" name="submit" value="What are my stats?">
+    </fieldset>
+  </form>
+  <!-- <p class="gameStats"></p> -->
+  <br>
+    <!-- <form id="gameStats">
       <fieldset>
         <legend>Get Game Stats</legend>
       </fieldset>
@@ -84,6 +92,9 @@
       <input id="games-won" type="text" value="Games Won">
       <button type="submit" class="btn btn-default">Game Stats</button>
     </form>
+   <p class="userStats"></p>
+ </br> -->
+
     <!-- <form>
   <input name="game[cell][index]" type="text" value="index">
   <input name="game[cell][value]" type="text" value="value">
@@ -106,6 +117,7 @@
   <p class="passwordChangeBanner">Password Changed Successfully</p>
 
 <!-- <div id="container" class="hidden"> -->
+<!-- <div id="container" class="avoid-clicks" -->
   <div class="board">
     <table>
       <tr id="row1">
