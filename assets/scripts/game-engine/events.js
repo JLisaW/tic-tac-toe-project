@@ -5,7 +5,7 @@ const gamesUi = require('../game-engine/ui.js')
 const playerWinLogic = require('../game-logic/logic.js')
 const getFormFields = require('../../../lib/get-form-fields')
 
-let board = require('../game-logic/logic.js')
+const board = require('../game-logic/logic.js')
 let player = 'x'
 
 // togglePlayer is to switch between player 'x' and player 'o'
@@ -19,20 +19,18 @@ const togglePlayer = function () {
 }
 
 let currentMove = 1
-const win = false
+let win = false
 
 const onNewGame = function (event) {
   console.log('onNewGame')
   event.preventDefault()
+  $('.square').empty()
+  $('.board').show()
+  $('.square').text('')
+  win = false
   console.log('new game started')
-  // $('.board').show
-  // $('.square'['id']).text('')
-  // board.board[2] = 'B'
   player = 'x'
-  // win = false
-  // forUpdate.board.over = win
   currentMove = 1
-  // const data = getFormFields(event.target)
   gamesApi.createGame()
       .then(gamesUi.createGameSuccess)
       .catch(gamesUi.createGameError)
@@ -40,7 +38,7 @@ const onNewGame = function (event) {
 }
 
 const onClickSquare = function (event) {
-  // event.preventDefault()
+  event.preventDefault()
   console.log('current player is', player)
   if (player === 'x' && win === false) {
     $(this)[0].innerText = 'x'
@@ -55,13 +53,17 @@ const onClickSquare = function (event) {
     currentMove += 1
     playerWinLogic.playerWin()
     console.log('player win checked 2')
-  } if (currentMove === 10 && win === false) {
+  }
+  togglePlayer()
+  if (currentMove === 9 && win === false) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
-  } togglePlayer()
-  gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
+    gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
+    // onClickSquare.over = true
+  // } if (win === true) {
+  // }
+  }
 }
-
 // const onGetGame = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
@@ -106,11 +108,11 @@ const onGetStats = function (event) {
 
 const addGameHandler = function () {
   console.log('addGameHandler')
-  $('.square').one('click', onClickSquare)
+  $('.square').on('click', onClickSquare)
   $('#new-game').on('click', onNewGame)
   // $('.game-search').on('click', onGetGame)
   $('.games').on('click', onGetGames)
-  // $('.update-game').on('click', onUpdateGame)
+  $('.update-game').on('click', onUpdateGame)
   // $('.gameStats').on('click', onGetStats)
 }
 
