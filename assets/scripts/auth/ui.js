@@ -1,7 +1,7 @@
 'use strict'
 
 const store = require('../store.js')
-
+const gameLogic = require('../game-logic/logic.js')
 const autoSignInSuccess = function (data) {
   store.user = data.user
   // $('#sign-out').show()
@@ -13,7 +13,7 @@ const autoSignInSuccess = function (data) {
 }
 const signUpSuccess = (data) => {
   console.log('Sign Up Successful')
-  // $('#modalSignUpSuccess').modal('show')
+  // gameLogic.changeUiMessage('thanks for signing up! please sign in')
 }
 
 const signUpFailure = (error) => {
@@ -40,7 +40,6 @@ const signOutFailure = (error) => {
 
 const changePasswordSuccess = (response) => {
   console.log('Password Changed Successfully')
-  $('#modalchangePasswordSuccess').modal('show')
 }
 
 const changePasswordFailure = (error) => {

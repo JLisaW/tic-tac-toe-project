@@ -95,7 +95,12 @@ const playerWin = function () {
     return
   }
 }
+// const changeUiMessage = (txt) => {
+//   const uimessage = $('#ui-message')[0]
+//   $(uimessage).text(txt)
+// }
 module.exports = {
   board,
   playerWin
+  // changeUiMessage
 }

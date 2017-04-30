@@ -12,9 +12,11 @@ float:right;
 font-size: 10px
 }
 
-.userStats{
+.gameStats{
   margin-top: 10px;
 }
+
+
 // .hidden{
 //   visibility: hidden;
 // }
@@ -23,13 +25,6 @@ font-size: 10px
   pointer-events: none;
 }
 
-.modalSignUpSuccess{
-  display: none
-}
-.passwordChangeBanner {
-  display:none;
-  font-size: 10px
-}
 
 .legend {
   font-size: 10px
@@ -46,10 +41,16 @@ font-size: 10px
   font-size: 35px;
 }
 
+.passwordChangeBanner {
+  display: none;
+  font-size: 35px
+}
+
 .drawBanner {
   display: none;
   font-size: 35px;
 }
+
 
 .board {
 margin: 100px auto;
@@ -62,4 +63,10 @@ font-size: 35px;
 $color-text: #036;
 letter-spacing: 1px;
 // display: none
+}
+
+@media (max-width: 300px) {
+    header {
+      width: 80%;
+   }
 }
