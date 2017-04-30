@@ -1,6 +1,6 @@
 'use strict'
 const store = require('../store.js')
-// const resetGame = require('./events.js')
+// const onNewGame = require('./events.js')
 
 let gamesPlayed = 0
 
@@ -30,7 +30,7 @@ const getGamesSuccess = (data) => {
   store.games = data.games
   gamesPlayed = store.games.length
   $('.gameStats').text('You have played ' + store.games.length + ' games!')
-  $('.gameStats').show()
+  // $('.gameStats').show()
 }
 
 const getGamesFailure = (error) => {

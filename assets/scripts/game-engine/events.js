@@ -25,22 +25,21 @@ const togglePlayer = function () {
 let currentMove = 0
 let win = false
 
-// const resetGame = function (event) {
-// // event.preventDefault()
-//   // board.board[parseInt($(this).attr('id'))] = ['', '', '', '', '', '', '', '', '']
-//   console.log('board reset')
-//   player = 'x'
-//   currentMove = 0
-//   win = false
-//   // $('#container').removeClass('hidden')
-//   $('.square').on('click', onNewGame)
-//   $('.square').text('')
-// }
-
-// $('#new-game').on('click', function () {
-//   $('.board').show()
-//   $('.square').text('')
-// })
+const resetBoard = function (event) {
+  console.log('onNewGame')
+  event.preventDefault()
+  win = false
+  player = 'x'
+  currentMove = 0
+  // $('.board').show
+  $('.square').text('')
+  $('.winBanner').hide()
+  console.log('new game started')
+  gamesApi.createGame()
+      .then(gamesUi.createGameSuccess)
+      .catch(gamesUi.createGameError)
+  $(this).attr('id')
+}
 
 const onNewGame = function (event) {
   console.log('onNewGame')
@@ -48,8 +47,10 @@ const onNewGame = function (event) {
   win = false
   player = 'x'
   currentMove = 0
-  $('.board').show()
-  $('.userStats').hide()
+  // gameBoard.board()
+  // $('.board').show
+  // $('.square').text('')
+  // $('.winBanner').hide()
   console.log('new game started')
   gamesApi.createGame()
       .then(gamesUi.createGameSuccess)
@@ -80,13 +81,6 @@ const onClickSquare = function (event) {
     $('.drawBanner').show()
   } gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
 }
-
-// const onEndGame = function (event) {
-//   console.log('game ended')
-//   if (win === true) {
-//     board.board = ['', '', '', '', '', '', '', '', '']
-//   }
-// }
 // const onGetGame = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
@@ -130,12 +124,6 @@ const onGetStats = function (event) {
     .catch(gamesUi.getGamesFailure)
 }
 
-// $('#new-game').on('click', function () {
-//   $('.square').text('')
-//   // $('.square').removeClass('avoid-clicks')
-//   // $('.board').removeClass('avoid-clicks')
-//   // $('#winner').text('')
-// })
 const addGameHandler = function () {
   console.log('addGameHandler')
   $('.square').on('click', onClickSquare)
@@ -144,6 +132,7 @@ const addGameHandler = function () {
   $('.games').on('click', onGetGames)
   $('.update-game').on('click', onUpdateGame)
   $('.gameStats').on('click', onGetStats)
+  $('#resetGame').on('click', resetBoard)
 }
 
 module.exports = {
@@ -151,5 +140,6 @@ module.exports = {
   onGetStats,
   onUpdateGame,
   onNewGame
-  // resetGame
+  // onEndGame
+  // newBoard
 }
