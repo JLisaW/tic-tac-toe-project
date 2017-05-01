@@ -42,7 +42,6 @@ const playerWin = function () {
     $('.board').hide()
     $('.winBanner').text('player ' + board[4] + ' wins!')
     $('.winBanner').show()
-    console.log('win048')
     return
   } else if (board[2] === board[4] && board[4] === board[6] && (board[2]) !== '') {
     $('.board').hide()

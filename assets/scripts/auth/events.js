@@ -30,7 +30,7 @@ const onSignOut = function (event) {
 }
 
 const onChangePassword = function (event) {
-  event.preventDefault()
+  $('#passwordChangeBanner').show
   const data = getFormFields(event.target)
   gamesApi.changePassword(data)
     .then(gamesUi.changePasswordSuccess)

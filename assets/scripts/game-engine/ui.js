@@ -20,7 +20,6 @@ const resetBoardSuccess = function (data) {
   store.game = data.game
   logic.userMessage('Board Reset!')
   $('.board').show()
-  console.log('create game success:', store.game)
 }
 
 const resetBoardFailure = function (data) {

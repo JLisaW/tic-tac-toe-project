@@ -82,7 +82,6 @@ const resetBoard = function (event) {
   $('#resetGame').on('click', function () {
     playerWinLogic.board = ['', '', '', '', '', '', '', '', '']
     // $('.board').attr('id')
-    console.log(playerWinLogic.board)
     playerWinLogic.win = false
     playerWinLogic.player = 'x'
     playerWinLogic.currentMove = 0
@@ -102,12 +101,11 @@ const onGetGames = function (event) {
       .then(gamesUi.onGetGamesSuccess)
       .catch(gamesUi.onGetGamesError)
   } else {
-    console.log('Please provide the game id.')
   }
 }
 
 const onUpdateGame = function (event) {
-  console.log('onUpdateGame called')
+  event.preventDefault()
   const data = getFormFields(event.target)
   gamesApi.updateGame(data)
       .then(gamesUi.onUpdateSuccess)
