@@ -14,27 +14,32 @@ const autoSignInSuccess = function (data) {
 const signUpSuccess = (data) => {
   console.log('Sign Up Successful')
   logic.userMessage('You have successfullly signed up, please sign in.')
+  $('.board').hide()
 }
 
 const signUpFailure = (error) => {
   console.error(error)
   logic.userMessage('Please choose a different username.')
+  $('.board').hide()
 }
 const signInSuccess = (response) => {
   console.log('Sign In Successful')
   store.user = response.user
-  logic.userMessage('You have successfully signed in.')
+  logic.userMessage('You have successfully signed in.  Please click new game.')
+  $('.board').hide()
 }
 
 const signInFailure = (error) => {
   console.error(error)
   logic.userMessage('Sign in unsuccessful, please try again.')
+  $('.board').hide()
 }
 
 const signOutSuccess = (response) => {
   console.log('Sign Out Successful')
   store.user = null
   logic.userMessage('You have successfully signed out.')
+  $('.board').hide()
 }
 
 const signOutFailure = (error) => {

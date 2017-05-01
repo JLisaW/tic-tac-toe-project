@@ -7,7 +7,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const board = require('../game-logic/logic.js')
 let player = 'x'
-// let board = ['', '', '', '', '', '', '', '', '']
+
 let userStats = {
   games: 0
 }
@@ -25,30 +25,25 @@ const togglePlayer = function () {
 let currentMove = 0
 let win = false
 
-const resetGame = function () {
-  console.log('reset button pressed')
-  event.preventDefault()
-  $('.board').ajax.reload(event)
-  // $('#resetGame').on('reset', function () {
-  //   resetGame()
-  //   onNewGame(event)
-  //   $(this).attr('id').foreach($(this).attr('id'), function () {
-  //     [parseInt($(this).attr('id'))].text('')
-  //     [parseInt($(this).attr('id'))].off('click')
-  //   }
-  // )
-  // }
-  // )
-}
-
+// $('#resetGame').on('click', function () {
+//   board.board = ['', '', '', '', '', '', '', '', '']
+//   console.log(board.board)
+//   win = false
+//   player = 'x'
+//   currentMove = 0
+//   $('.board').show()
+//   $('.square').text('')
+//   $('.winBanner').hide()
+//   $('.drawBanner').hide()
+// })
 const onNewGame = function (event) {
   console.log('onNewGame')
   event.preventDefault()
   win = false
   player = 'x'
   currentMove = 0
-  // gameBoard.board()
-  // $('.board').show
+  $('.board').show()
+  $('.square').text('')
   $('.winBanner').hide()
   $('.drawBanner').hide()
   console.log('new game started')
@@ -82,17 +77,6 @@ const onClickSquare = function (event) {
   } gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
 }
 
-// const endGame = function () {
-//   if (currentMove === 9 && win === false) {
-//     gameDraw()
-//   } else {
-//     $('#all-games').text('')
-//   }
-// }
-//
-// const gameDraw = function () {
-//   win = true
-// }
 // const onGetGame = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
@@ -105,6 +89,23 @@ const onClickSquare = function (event) {
 //     console.log('Please provide a game id.')
 //   }
 // }
+
+const resetBoard = function (event) {
+  console.log('reset board')
+  event.preventDefault()
+  $('#resetGame').on('click', function () {
+    // board.board = ['', '', '', '', '', '', '', '', '']
+    $('.board').attr('id')
+    console.log(board.board)
+    win = false
+    player = 'x'
+    currentMove = 0
+    $('.board').show()
+    $('.square').text('')
+    $('.winBanner').hide()
+    $('.drawBanner').hide()
+  })
+}
 
 const onGetGames = function (event) {
   event.preventDefault()
@@ -144,7 +145,7 @@ const addGameHandler = function () {
   $('.games').on('click', onGetGames)
   $('.update-game').on('click', onUpdateGame)
   $('.gameStats').on('click', onGetStats)
-  $('.resetGame').on('click', resetGame)
+  $('#resetGame').on('click', resetBoard)
 }
 
 module.exports = {
@@ -152,7 +153,4 @@ module.exports = {
   onGetStats,
   onUpdateGame,
   onNewGame
-  // endGame,
-  // gameDraw
-  // newBoard
 }

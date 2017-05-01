@@ -14,6 +14,17 @@ const createGame = function () {
   })
 }
 
+const resetBoard = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: ''
+  })
+}
+
 const updateGame = function (index, value, gameOver) {
   console.log('game update called', store.game)
   return $.ajax({
@@ -60,5 +71,6 @@ module.exports = {
   createGame,
   updateGame,
   getGame,
-  getGameIndex
+  getGameIndex,
+  resetBoard
 }
