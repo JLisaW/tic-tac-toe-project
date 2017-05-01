@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic-Tac-Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags unless you know what you are doing -->
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> -->
+  <link rel="stylesheet" href="assets/styles/index.scss">
+  <!-- Do not add `script` tags unless you know what you are doing -->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body class="container-fluid">
+
+  <h1>Tic-Tac-Toe</h1>
+
+  <div class="authentication">
+    <form id="sign-up">
+      <fieldset>
+        <legend>Sign up!</legend>
+        <input type="text" name="credentials[email]" placeholder="email">
+        <input type="password" name="credentials[password]" placeholder="password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="password_confirmation">
+        <input type="submit" name="submit" value="Sign up!">
+      </fieldset>
+    </form>
+<br>
+    <form id="sign-in">
+      <fieldset>
+        <legend>Sign In!</legend>
+        <input type="text" name="credentials[email]" placeholder="email">
+        <input type="password" name="credentials[password]" placeholder="password">
+        <input type="submit" name="submit" value="Sign In!">
+      </fieldset>
+    </form>
+
+<br>
+<form id="change-password">
+  <fieldset>
+    <legend>Change Password!</legend>
+    <input type="password" name="passwords[old]" placeholder="old password">
+    <input type="password" name="passwords[new]" placeholder="new password">
+    <input type="submit" name="submit" value="Change Password">
+  </fieldset>
+</form>
+<!-- <br>
+<div id="alert" class="hidden">Password Changed</div>
+<div id="container" class="hidden">
+</br> -->
+<br>
+    <form id="sign-out">
+      <fieldset>
+        <legend>Sign Out!</legend>
+        <input type="submit" name="submit" value="Sign Out!">
+      </fieldset>
+    </form>
+<br>
+    <form id="new-game">
+      <fieldset>
+        <legend>New Game!</legend>
+        <input type="submit" name="submit" value="new game!">
+      </fieldset>
+    </form>
+<br>
+<br>
+    <form id="resetGame">
+      <fieldset>
+        <legend>Reset Board!</legend>
+        <input type="submit" name="submit" value="Reset">
+      </fieldset>
+    </form>
+<br>
+    <!-- <form id="game-search">
+      <fieldset>
+        <legend>Get Game</legend>
+        <input type="text" name="game[id]" id="game-id" placeholder="Game ID Here">
+        <button type="submit" class="btn btn-default">Game Search</button>
+      </fieldset>
+    </form> -->
+
+    <!-- <form id="game-update">
+      <fieldset>
+        <legend>Update Game</legend>
+        <input type="text" name="game[id]" id="game-id-update" placeholder="Game ID Here">
+        <button type="submit" class="btn btn-default">Update Game</button>
+      </fieldset>
+    </form> -->
+    <form id="get-games" class="hidden">
+         <input type="submit" name="submit" value="how many games have i played?">
+       </form>
+       <br>
+         <div id="all-games"></div>
+<br>
+<form class="gameStats">
+    <fieldset>
+      <legend>Game Stats</legend>
+        <input type="submit" name="submit" value="How many games have I played?">
+    </fieldset>
+  </form>
+  <!-- <p class="gameStats"></p> -->
+  <br>
+    <!-- <form id="gameStats">
+      <fieldset>
+        <legend>Get Game Stats</legend>
+      </fieldset>
+      <input id="games-played" type="text" value="Games Played">
+      <input id="games-won" type="text" value="Games Won">
+      <button type="submit" class="btn btn-default">Game Stats</button>
+    </form>
+   <p class="userStats"></p>
+ </br> -->
+
+
+    <!-- <form>
+  <input name="game[cell][index]" type="text" value="index">
+  <input name="game[cell][value]" type="text" value="value">
+  <input name="game[over]" type="text" value="gameOver">
+</form> -->
+  </div>
+
+<!-- <div class="modalContainer">
+  <div class="modalAuthentication" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!/ modal buttons       -->
+    <!-- <div id="modalSignUpSuccess" class="modal fade">
+    <div id="modalSignInSuccess" class="modal fade">
+    </div>
+  </div>
+</div>
+</div> -->
+  <p class="winBanner">Win</p>
+  <p class="drawBanner">Draw!</p>
+  <p class="passwordChangeBanner">Password Changed Successfully</p>
+  <p id="message"></p>
+
+<!-- <div id="container" class="hidden"> -->
+<!-- <div id="container" class="avoid-clicks" -->
+  <div class="board">
+    <table>
+      <tr id="row1">
+        <td class="square" id='0'></td>
+        <td class="square" id='1'></td>
+        <td class="square" id='2'></td>
+      </tr>
+      <tr id="row2">
+        <td class="square" id='3'></td>
+        <td class="square" id='4'></td>
+        <td class="square" id='5'></td>
+      </tr>
+      <tr id="row3">
+        <td class="square" id='6'></td>
+        <td class="square" id='7'></td>
+        <td class="square" id='8'></td>
+      </tr>
+    </table>
+  </div>
+      </div>
+    </div>
+<!-- </div> -->
+</body>
+
+</html>
