@@ -1,43 +1,12 @@
 'use strict'
 // const gamesUi = require('../game-engine/events.js')
 // const gamesApi = require('../game-engine/api.js')
-// const newGame = require('../game-engine/events.js')
+// const onNewGame = require('../game-engine/events.js')
 
-const board = ['', '', '', '', '', '', '', '', '']
+let board = ['', '', '', '', '', '', '', '', '']
 let win = false
 let currentMove = 0
 let player = 'x'
-
-// const onEndGame = function () {
-//   if (win === true) {
-//     $(this).text('')
-//   } else {
-//     $(this).text('')
-//   }
-// }
-// const resetBoard = () => {
-//   // onNewGame()
-//   board
-//   player = 'x'
-//   currentMove = 0
-//   win = false
-//   // $('#container').removeClass('hidden')
-//   $('.square').on('click', onNewGame)
-//   $('.square').text('')
-// }
-// check for winner
-
-// const endGame = function () {
-//   for (let i = board.length; i > 0; i--) {
-//     board.pop()
-//   }
-// }
-
-// const endGame = function () {
-//   for (let i = board.length; i > 0; i--) {
-//     board.pop()
-//   }
-// }
 
 const playerWin = function () {
   console.log(board)
@@ -50,7 +19,6 @@ const playerWin = function () {
     console.log('win012')
     console.log('')
     // $('.square').text('')
-    return
   } else if (board[3] === board[4] && board[4] === board[5] && (board[3]) !== '') {
     // $('.board').hide()
     $('.winBanner').text('player ' + board[3] + ' wins!')
@@ -95,12 +63,16 @@ const playerWin = function () {
     return
   }
 }
-// const changeUiMessage = (txt) => {
-//   const uimessage = $('#ui-message')[0]
-//   $(uimessage).text(txt)
-// }
+  // if (win === true || currentMove === 0) {
+  //   return endGame()
+
+const userMessage = (txt) => {
+  const message = $('#message')[0]
+  $(message).text(txt)
+}
+
 module.exports = {
   board,
-  playerWin
-  // changeUiMessage
+  playerWin,
+  userMessage
 }

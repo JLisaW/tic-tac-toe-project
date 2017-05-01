@@ -7,7 +7,7 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const board = require('../game-logic/logic.js')
 let player = 'x'
-
+// let board = ['', '', '', '', '', '', '', '', '']
 let userStats = {
   games: 0
 }
@@ -25,20 +25,20 @@ const togglePlayer = function () {
 let currentMove = 0
 let win = false
 
-const resetBoard = function (event) {
-  console.log('onNewGame')
+const resetGame = function () {
+  console.log('reset button pressed')
   event.preventDefault()
-  win = false
-  player = 'x'
-  currentMove = 0
-  // $('.board').show
-  $('.square').text('')
-  $('.winBanner').hide()
-  console.log('new game started')
-  gamesApi.createGame()
-      .then(gamesUi.createGameSuccess)
-      .catch(gamesUi.createGameError)
-  $(this).attr('id')
+  $('.board').ajax.reload(event)
+  // $('#resetGame').on('reset', function () {
+  //   resetGame()
+  //   onNewGame(event)
+  //   $(this).attr('id').foreach($(this).attr('id'), function () {
+  //     [parseInt($(this).attr('id'))].text('')
+  //     [parseInt($(this).attr('id'))].off('click')
+  //   }
+  // )
+  // }
+  // )
 }
 
 const onNewGame = function (event) {
@@ -49,8 +49,8 @@ const onNewGame = function (event) {
   currentMove = 0
   // gameBoard.board()
   // $('.board').show
-  // $('.square').text('')
-  // $('.winBanner').hide()
+  $('.winBanner').hide()
+  $('.drawBanner').hide()
   console.log('new game started')
   gamesApi.createGame()
       .then(gamesUi.createGameSuccess)
@@ -81,6 +81,18 @@ const onClickSquare = function (event) {
     $('.drawBanner').show()
   } gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
 }
+
+// const endGame = function () {
+//   if (currentMove === 9 && win === false) {
+//     gameDraw()
+//   } else {
+//     $('#all-games').text('')
+//   }
+// }
+//
+// const gameDraw = function () {
+//   win = true
+// }
 // const onGetGame = function (event) {
 //   event.preventDefault()
 //   const data = getFormFields(event.target)
@@ -132,7 +144,7 @@ const addGameHandler = function () {
   $('.games').on('click', onGetGames)
   $('.update-game').on('click', onUpdateGame)
   $('.gameStats').on('click', onGetStats)
-  $('#resetGame').on('click', resetBoard)
+  $('.resetGame').on('click', resetGame)
 }
 
 module.exports = {
@@ -140,6 +152,7 @@ module.exports = {
   onGetStats,
   onUpdateGame,
   onNewGame
-  // onEndGame
+  // endGame,
+  // gameDraw
   // newBoard
 }

@@ -36,6 +36,7 @@
         <input type="submit" name="submit" value="Sign In!">
       </fieldset>
     </form>
+
 <br>
 <form id="change-password">
   <fieldset>
@@ -60,7 +61,7 @@
     <form id="new-game">
       <fieldset>
         <legend>New Game!</legend>
-        <input type="reset" name="submit" value="new game!">
+        <input type="submit" name="submit" value="new game!">
       </fieldset>
     </form>
 <br>
@@ -68,7 +69,7 @@
     <form id="resetGame">
       <fieldset>
         <legend>Reset Board!</legend>
-        <input type="submit" name="submit" value="Reset Board!">
+        <input type="submit" name="submit" value="Reset">
       </fieldset>
     </form>
 <br>
@@ -87,6 +88,11 @@
         <button type="submit" class="btn btn-default">Update Game</button>
       </fieldset>
     </form> -->
+    <form id="get-games" class="hidden">
+         <input type="submit" name="submit" value="how many games have i played?">
+       </form>
+       <br>
+         <div id="all-games"></div>
 <br>
 <form class="gameStats">
     <fieldset>
@@ -128,6 +134,7 @@
   <p class="winBanner">Win</p>
   <p class="drawBanner">Draw!</p>
   <p class="passwordChangeBanner">Password Changed Successfully</p>
+  <p id="message"></p>
 
 <!-- <div id="container" class="hidden"> -->
 <!-- <div id="container" class="avoid-clicks" -->
