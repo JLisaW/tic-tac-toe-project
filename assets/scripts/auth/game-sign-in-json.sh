@@ -1,4 +1,4 @@
-curl "http://httpbin.org/post" \
+curl "https://httpbin.org/post" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
