@@ -11,7 +11,6 @@ let userStats = {
 
 // togglePlayer is to switch between player 'x' and player 'o'
 const togglePlayer = function () {
-  console.log('toggling player')
   if (playerWinLogic.player === 'x') {
     playerWinLogic.player = 'o'
   } else {
@@ -31,7 +30,6 @@ const togglePlayer = function () {
 //   $('.drawBanner').hide()
 // })
 const onNewGame = function (event) {
-  console.log('onNewGame')
   event.preventDefault()
   playerWinLogic.win = false
   playerWinLogic.player = 'x'
@@ -40,7 +38,6 @@ const onNewGame = function (event) {
   $('.square').text('')
   $('.winBanner').hide()
   $('.drawBanner').hide()
-  console.log('new game started')
   gamesApi.createGame()
       .then(gamesUi.createGameSuccess)
       .catch(gamesUi.createGameError)
@@ -49,20 +46,16 @@ const onNewGame = function (event) {
 
 const onClickSquare = function (event) {
   event.preventDefault()
-  console.log('current player is', playerWinLogic.player)
   if (playerWinLogic.player === 'x' && playerWinLogic.win === false) {
     $(this)[0].innerText = 'x'
     playerWinLogic.board[parseInt($(this).attr('id'))] = 'x'
     playerWinLogic.currentMove += 1
     playerWinLogic.playerWin()
-    console.log('player win checked 1 within onClickSquare')
   } else if (playerWinLogic.player === 'o' && playerWinLogic.win === false) {
-    console.log('onClickSquare player o')
     $(this)[0].innerText = 'o'
     playerWinLogic.board[parseInt($(this).attr('id'))] = 'o'
     playerWinLogic.currentMove += 1
     playerWinLogic.playerWin()
-    console.log('player win checked 2')
   }
   togglePlayer()
   if (playerWinLogic.currentMove === 9 && playerWinLogic.win === false) {
@@ -85,7 +78,6 @@ const onClickSquare = function (event) {
 // }
 
 const resetBoard = function (event) {
-  console.log('reset board')
   event.preventDefault()
   $('#resetGame').on('click', function () {
     playerWinLogic.board = ['', '', '', '', '', '', '', '', '']
@@ -115,7 +107,6 @@ const onGetGames = function (event) {
 }
 
 const onUpdateGame = function (event) {
-  event.preventDefault()
   console.log('onUpdateGame called')
   const data = getFormFields(event.target)
   gamesApi.updateGame(data)
@@ -125,7 +116,6 @@ const onUpdateGame = function (event) {
 
 const onGetStats = function (event) {
   event.preventDefault()
-  console.log('onGetStats fired')
   gamesApi.getGame()
     .then(gamesUi.getGamesSuccess)
     .catch(gamesUi.getGamesFailure)

@@ -14,19 +14,18 @@ const createGame = function () {
   })
 }
 
-const resetBoard = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/games',
-    method: 'POST',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    },
-    data: ''
-  })
-}
+// const resetBoard = function () {
+//   return $.ajax({
+//     url: config.apiOrigin + '/games',
+//     method: 'POST',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data: ''
+//   })
+// }
 
 const updateGame = function (index, value, gameOver) {
-  console.log('game update called', store.game)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
@@ -46,7 +45,6 @@ const updateGame = function (index, value, gameOver) {
 }
 
 const getGame = function (data) {
-  console.log('game loaded')
   event.preventDefault()
   return $.ajax({
     url: config.apiOrigin + '/games',
@@ -71,6 +69,6 @@ module.exports = {
   createGame,
   updateGame,
   getGame,
-  getGameIndex,
-  resetBoard
+  getGameIndex
+  // resetBoard
 }
