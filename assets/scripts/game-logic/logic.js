@@ -1,7 +1,7 @@
 'use strict'
 // const gamesUi = require('../game-engine/events.js')
 // const gamesApi = require('../game-engine/api.js')
-// const gameOver = require('../game-engine/events.js')
+// const player = require('../game-engine/events.js')
 
 let board = ['', '', '', '', '', '', '', '', '']
 let win = false

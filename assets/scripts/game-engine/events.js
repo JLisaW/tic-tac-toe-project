@@ -5,9 +5,6 @@ const gamesUi = require('../game-engine/ui.js')
 const playerWinLogic = require('../game-logic/logic.js')
 const getFormFields = require('../../../lib/get-form-fields')
 
-const board = require('../game-logic/logic.js')
-let player = 'x'
-
 let userStats = {
   games: 0
 }
@@ -15,15 +12,12 @@ let userStats = {
 // togglePlayer is to switch between player 'x' and player 'o'
 const togglePlayer = function () {
   console.log('toggling player')
-  if (player === 'x') {
-    player = 'o'
+  if (playerWinLogic.player === 'x') {
+    playerWinLogic.player = 'o'
   } else {
-    player = 'x'
+    playerWinLogic.player = 'x'
   }
 }
-
-let currentMove = 0
-let win = false
 
 // $('#resetGame').on('click', function () {
 //   board.board = ['', '', '', '', '', '', '', '', '']
@@ -39,9 +33,9 @@ let win = false
 const onNewGame = function (event) {
   console.log('onNewGame')
   event.preventDefault()
-  win = false
-  player = 'x'
-  currentMove = 0
+  playerWinLogic.win = false
+  playerWinLogic.player = 'x'
+  playerWinLogic.currentMove = 0
   $('.board').show()
   $('.square').text('')
   $('.winBanner').hide()
@@ -55,26 +49,26 @@ const onNewGame = function (event) {
 
 const onClickSquare = function (event) {
   event.preventDefault()
-  console.log('current player is', player)
-  if (player === 'x' && win === false) {
+  console.log('current player is', playerWinLogic.player)
+  if (playerWinLogic.player === 'x' && playerWinLogic.win === false) {
     $(this)[0].innerText = 'x'
-    board.board[parseInt($(this).attr('id'))] = 'x'
-    currentMove += 1
+    playerWinLogic.board[parseInt($(this).attr('id'))] = 'x'
+    playerWinLogic.currentMove += 1
     playerWinLogic.playerWin()
     console.log('player win checked 1 within onClickSquare')
-  } else if (player === 'o' && win === false) {
+  } else if (playerWinLogic.player === 'o' && playerWinLogic.win === false) {
     console.log('onClickSquare player o')
     $(this)[0].innerText = 'o'
-    board.board[parseInt($(this).attr('id'))] = 'o'
-    currentMove += 1
+    playerWinLogic.board[parseInt($(this).attr('id'))] = 'o'
+    playerWinLogic.currentMove += 1
     playerWinLogic.playerWin()
     console.log('player win checked 2')
   }
   togglePlayer()
-  if (currentMove === 9 && win === false) {
+  if (playerWinLogic.currentMove === 9 && playerWinLogic.win === false) {
     $('.drawBanner').text('Game is a draw')
     $('.drawBanner').show()
-  } gamesApi.updateGame(board.board[parseInt($(this).attr('id'))])
+  } gamesApi.updateGame(playerWinLogic.board[parseInt($(this).attr('id'))])
 }
 
 // const onGetGame = function (event) {
@@ -94,12 +88,12 @@ const resetBoard = function (event) {
   console.log('reset board')
   event.preventDefault()
   $('#resetGame').on('click', function () {
-    // board.board = ['', '', '', '', '', '', '', '', '']
-    $('.board').attr('id')
-    console.log(board.board)
-    win = false
-    player = 'x'
-    currentMove = 0
+    playerWinLogic.board = ['', '', '', '', '', '', '', '', '']
+    // $('.board').attr('id')
+    console.log(playerWinLogic.board)
+    playerWinLogic.win = false
+    playerWinLogic.player = 'x'
+    playerWinLogic.currentMove = 0
     $('.board').show()
     $('.square').text('')
     $('.winBanner').hide()
@@ -139,7 +133,7 @@ const onGetStats = function (event) {
 
 const addGameHandler = function () {
   console.log('addGameHandler')
-  $('.square').on('click', onClickSquare)
+  $('.square').one('click', onClickSquare)
   $('#new-game').on('click', onNewGame)
   // $('.game-search').on('click', onGetGame)
   $('.games').on('click', onGetGames)
