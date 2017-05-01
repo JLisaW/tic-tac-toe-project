@@ -6,7 +6,6 @@ const gamesUi = require('./ui.js')
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
-  console.log('SignIn complete!')
   event.preventDefault()
   gamesApi.signIn(data)
     .then(gamesUi.signInSuccess)
