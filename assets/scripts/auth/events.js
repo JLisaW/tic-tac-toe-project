@@ -4,8 +4,6 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 // const gameEngineEvents = require('../game-engine/events.js')
 const gamesApi = require('./api.js')
 const gamesUi = require('./ui.js')
-const autoSignInSuccess = require('./ui.js')
-const autoSignInFailure = require('./ui.js')
 
 const onSignIn = function (event) {
   const data = getFormFields(this)
@@ -21,17 +19,11 @@ const onSignUp = function (event) {
   event.preventDefault()
   gamesApi.signUp(data)
     .then(gamesUi.signUpSuccess)
-    .then(() => {
-      gamesApi.autoSignIn(data)
-        .then(gamesUi.autoSignInSuccess)
-        .catch(gamesUi.autoSignInFailure)
-    })
     .catch(gamesUi.signUpFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('SignOut complete')
   const data = getFormFields(event.target)
   gamesApi.signOut(data)
     .then(gamesUi.signOutSuccess)
@@ -39,7 +31,6 @@ const onSignOut = function (event) {
 }
 
 const onChangePassword = function (event) {
-  event.preventDefault()
   console.log('Change Password Success')
   $('#passwordChangeBanner').show
   const data = getFormFields(event.target)
@@ -56,7 +47,5 @@ const addHandlers = () => {
 }
 
 module.exports = {
-  addHandlers,
-  autoSignInSuccess,
-  autoSignInFailure
+  addHandlers
 }

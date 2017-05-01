@@ -17,43 +17,36 @@ const signUpSuccess = (data) => {
   $('.board').hide()
 }
 
-const signUpFailure = (error) => {
-  console.error(error)
+const signUpFailure = (response) => {
   logic.userMessage('Please choose a different username.')
   $('.board').hide()
 }
 const signInSuccess = (response) => {
-  console.log('Sign In Successful')
   store.user = response.user
   logic.userMessage('You have successfully signed in.  Please click new game.')
   $('.board').hide()
 }
 
-const signInFailure = (error) => {
-  console.error(error)
+const signInFailure = (response) => {
   logic.userMessage('Sign in unsuccessful, please try again.')
   $('.board').hide()
 }
 
 const signOutSuccess = (response) => {
-  console.log('Sign Out Successful')
   store.user = null
   logic.userMessage('You have successfully signed out.')
   $('.board').hide()
 }
 
-const signOutFailure = (error) => {
-  console.error(error)
+const signOutFailure = (response) => {
   logic.userMessage('You are still signed in, please try again.')
 }
 
 const changePasswordSuccess = (response) => {
-  console.log('Password Changed Successfully')
   logic.userMessage('Password Change Successful.')
 }
 
-const changePasswordFailure = (error) => {
-  console.error(error)
+const changePasswordFailure = (response) => {
   logic.userMessage('Unsuccessful password change, please try again.')
 }
 

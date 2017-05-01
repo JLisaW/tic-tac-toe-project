@@ -26,7 +26,6 @@ const resetBoard = function () {
 }
 
 const updateGame = function (index, value, gameOver) {
-  console.log('game update called', store.game)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',
