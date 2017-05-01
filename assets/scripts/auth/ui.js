@@ -8,7 +8,7 @@ const signUpSuccess = (data) => {
   $('.board').hide()
 }
 
-const signUpFailure = (error) => {
+const signUpFailure = (response) => {
   logic.userMessage('Please choose a different username.')
   $('.board').hide()
 }

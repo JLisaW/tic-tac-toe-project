@@ -122,7 +122,6 @@ const onGetStats = function (event) {
 }
 
 const addGameHandler = function () {
-  console.log('addGameHandler')
   $('.square').one('click', onClickSquare)
   $('#new-game').on('click', onNewGame)
   // $('.game-search').on('click', onGetGame)
